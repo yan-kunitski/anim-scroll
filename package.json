@@ -1,0 +1,16 @@
+{
+	"_from": "snap-scroll@0.1.0",
+	"_id": "snap-scroll@0.1.0",
+	"_location": "/snap-scroll",
+	"_where": "/media/yan/Сервер/test/node_modules/snap-scroll",
+	"author": {
+	  "name": "VAZA",
+	  "email": "yankunitski@gmail.com"
+	},
+	"description": "Module to animate your web pages",
+	"license": "MIT",
+	"main": "index",
+	"name": "snap-scroll",
+	"version": "0.1.0"
+  }
+  
