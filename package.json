@@ -1,16 +1,28 @@
 {
-	"_from": "snap-scroll@0.1.0",
-	"_id": "snap-scroll@0.1.0",
-	"_location": "/snap-scroll",
-	"_where": "/media/yan/Сервер/test/node_modules/snap-scroll",
 	"author": {
-	  "name": "VAZA",
-	  "email": "yankunitski@gmail.com"
+		"name": "VAZA",
+		"email": "yankunitski@gmail.com"
 	},
 	"description": "Module to animate your web pages",
+	"scripts": {
+		"build": "npx babel src --out-dir dist",
+		"prepublishOnly": "npm run build"
+	},
 	"license": "MIT",
-	"main": "index",
+	"main": "src/index.js",
 	"name": "snap-scroll",
-	"version": "0.1.0"
-  }
-  
+	"version": "0.1.0",
+	"dependencies": {},
+	"devDependencies": {
+		"@babel/cli": "^7.2.3",
+		"@babel/core": "^7.2.2",
+		"@babel/node": "^7.2.2",
+		"@babel/preset-env": "^7.2.3",
+		"eslint": "^5.11.1",
+		"eslint-config-airbnb-base": "^13.1.0",
+		"eslint-plugin-import": "^2.14.0"
+	},
+	"files": [
+		"dist"
+	]
+}

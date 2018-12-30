@@ -1,0 +1,27 @@
+{
+    "extends": "airbnb-base",
+	"env": {
+		"browser": true,
+		"node": true
+	},
+	"parserOptions": {
+        "ecmaVersion": 9,
+        "sourceType": "module",
+        "ecmaFeatures": {
+			"jsx": true,
+			"generators": true,
+			"modules": true,
+			"forOf": true
+        }
+    },
+	"rules": {
+		"indent": ["error", "tab"],
+		"no-tabs": 0,
+		"no-underscore-dangle": 0,
+		"no-restricted-syntax": 0,
+		"no-continue": 0,
+		"no-param-reassign": 0,
+		"no-console": "off", 
+		"arrow-parens": ["error", "as-needed"]
+	}
+}
