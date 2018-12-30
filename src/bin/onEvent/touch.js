@@ -1,5 +1,5 @@
-let setBlock = require('./setBlock'),
-	animation = require('../animation')
+const setBlock = require('./setBlock');
+const animation = require('../animation');
 
 module.exports = (wrapper, options, activeSlide) => {
 	let direction = '',
