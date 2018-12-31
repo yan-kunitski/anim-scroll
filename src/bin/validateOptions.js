@@ -44,9 +44,6 @@ module.exports = options => {
 	};
 	setDelaySlide(options.slideAnimation.next, options);
 	setDelaySlide(options.slideAnimationRev.next, options);
-	console.log(options.slideAnimation.active);
-	console.log(options.slideAnimation.next);
-	console.log(options.slideAnimationRev.active);
-	console.log(options.slideAnimationRev.next);
+
 	return options;
 };
