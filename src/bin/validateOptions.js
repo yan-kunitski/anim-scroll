@@ -19,34 +19,34 @@ function validateFields(options, conf) {
 	}
 }
 
-function setPrev(options) {
-	const active = JSON.parse(JSON.stringify(options.slideAnimation.active));
-	const next = JSON.parse(JSON.stringify(options.slideAnimation.next));
+function setRev(options) {
+	const frames = JSON.parse(JSON.stringify(options));
+	const animLength = options.length;
+	let index = 0;
 
-	function reverse(arr, tr) {
-		let s = '';
+	frames.reverse().map((el, i) => {
+		index = i === 0 ? i : animLength - i;
+		el.transition = options[index].transition;
 
-		arr.reverse().map((el, i) => {
-			if (!tr[i]) s = tr[1].transition;
-			else s = tr[i].transition;
-			el.transition = s;
+		return el;
+	});
 
-			return el;
-		});
-	}
-
-	reverse(active, options.slideAnimation.next);
-	reverse(next, options.slideAnimation.active);
-
-	options.slideAnimationRev = {
-		active: next,
-		next: active,
-	};
+	return frames;
 }
+
+const setDelaySlide = (arr, options) => { arr.unshift({ transition: `0s ${options.slideAnimation.delayBetweenSlides}` }); };
 
 module.exports = options => {
 	validateFields(options, config);
-	setPrev(options);
-
+	options.slideAnimationRev = {
+		active: setRev(options.slideAnimation.next),
+		next: setRev(options.slideAnimation.active),
+	};
+	setDelaySlide(options.slideAnimation.next, options);
+	setDelaySlide(options.slideAnimationRev.next, options);
+	console.log(options.slideAnimation.active);
+	console.log(options.slideAnimation.next);
+	console.log(options.slideAnimationRev.active);
+	console.log(options.slideAnimationRev.next);
 	return options;
 };
