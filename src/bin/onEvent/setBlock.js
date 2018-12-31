@@ -1,1 +1,1 @@
-module.exports = (box, val) => box.lastChild.style.display = val
+module.exports = (box, val) => { box.lastChild.style.display = val; };

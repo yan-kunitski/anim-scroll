@@ -1,39 +1,37 @@
-let setBlock = require('./setBlock'),
-	animation = require('../animation')
+const setBlock = require('./setBlock');
+const animation = require('../animation');
 
 module.exports = (wrapper, options, activeSlide) => {
-	let direction = ''
+	let direction = '';
 
-    function handler(e) {
-		if(e.deltaY > options.scrollSensitivity) direction = 'next'
-		else if(e.deltaY < 0 - options.scrollSensitivity) direction = 'prev'
-		else return
+	function handler(e) {
+		if (e.deltaY > options.scrollSensitivity) direction = 'next';
+		else if (e.deltaY < 0 - options.scrollSensitivity) direction = 'prev';
+		else return;
 
-		if(direction) {
-			options.scrollSensitivity += 7680
+		if (direction) {
+			options.scrollSensitivity += 7680;
 
-			if(wrapper.navBar) setBlock(wrapper.navBar, 'block')
-			
-			if(wrapper.arrows) {
-				setBlock(wrapper.arrows.arrowNext, 'block')
-				setBlock(wrapper.arrows.arrowPrev, 'block')
+			if (wrapper.navBar) setBlock(wrapper.navBar, 'block');
+			if (wrapper.arrows) {
+				setBlock(wrapper.arrows.arrowNext, 'block');
+				setBlock(wrapper.arrows.arrowPrev, 'block');
 			}
 
 			animation(direction, wrapper, options, activeSlide)
 				.then(() => {
-					direction = ''
+					direction = '';
 
-					if(wrapper.navBar) setBlock(wrapper.navBar, 'none')
-					
-					if(wrapper.arrows) {
-						setBlock(wrapper.arrows.arrowNext, 'none')
-						setBlock(wrapper.arrows.arrowPrev, 'none')
+					if (wrapper.navBar) setBlock(wrapper.navBar, 'none');
+					if (wrapper.arrows) {
+						setBlock(wrapper.arrows.arrowNext, 'none');
+						setBlock(wrapper.arrows.arrowPrev, 'none');
 					}
 
-					options.scrollSensitivity -= 7680
-				})
+					options.scrollSensitivity -= 7680;
+				});
 		}
-    }
-    
-	wrapper.slides.addEventListener("wheel", handler)
-}
+	}
+
+	wrapper.slides.addEventListener('wheel', handler);
+};

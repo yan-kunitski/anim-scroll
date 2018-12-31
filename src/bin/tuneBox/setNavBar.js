@@ -82,7 +82,6 @@ module.exports = (box, options, amount) => {
 		else el = dotWrapper.cloneNode(true);
 
 		setSsClick(el, i);
-
 		el.children[options.hintIndex].textContent = options.hints[i];
 		navBar.appendChild(el);
 	}
