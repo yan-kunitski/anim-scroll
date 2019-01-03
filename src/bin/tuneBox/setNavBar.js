@@ -19,8 +19,8 @@ module.exports = (box, options, amount) => {
 	if (options.hints) {
 		hint = document.createElement('span');
 
-		setStyle(hint, options.hintsStyle);
-		hint.style.transition = options.hintsStyle.transition;
+		setStyle(hint, options.hintStyle);
+		hint.style.transition = options.hintStyle.transition;
 		hint.style.display = 'block';
 
 		let pos = 0;
@@ -63,10 +63,10 @@ module.exports = (box, options, amount) => {
 			}
 		}
 		if (indent === 'top' || indent === 'bottom') {
-			options.hintsStyle.indent = `${0 - parseFloat(options.hintsStyle.indent)}px`;
+			options.hintStyle.indent = `${0 - parseFloat(options.hintStyle.indent)}px`;
 		}
 
-		hint.style[indent] = options.hintsStyle.indent;
+		hint.style[indent] = options.hintStyle.indent;
 		hint.style.opacity = '0';
 		hint.style.zIndex = '-10';
 		dotWrapper.style.flexDirection = flexDir;

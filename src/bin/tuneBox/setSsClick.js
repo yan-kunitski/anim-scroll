@@ -1,10 +1,4 @@
-module.exports = (element, value) => {
-	function setField(box) {
-		box.ssClick = value;
-		if (box.children) {
-			for (const el of box.children) setField(el);
-		}
-	}
-
-	setField(element);
+module.exports = (box, value) => {
+	box.ssClick = value;
+	if (box.children[1]) for (const el of box.children) module.exports(el, value);
 };

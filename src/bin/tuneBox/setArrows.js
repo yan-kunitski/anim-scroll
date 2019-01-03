@@ -5,9 +5,10 @@ const setSsClick = require('./setSsClick');
 module.exports = (box, options) => {
 	const arrow = getElement(options.arrowsStyle.arrows.shape);
 	const arrowNext = document.createElement('div');
+	const prevTransform = options.arrowsStyle.arrows.usual.transform;
 	let arrowPrev = {};
-	const prevTransform =	options.arrowsStyle.arrows.usual.transform;
 
+	setStyle(arrow, options.arrowsStyle.arrows.usual);
 	arrowNext.appendChild(arrow);
 	setStyle(arrowNext, options.arrowsStyle.wrapper);
 	arrowNext.style.position = 'absolute';

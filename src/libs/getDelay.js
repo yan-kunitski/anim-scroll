@@ -1,5 +1,4 @@
 const { OptionsError } = require('../errors/');
-const sendInfo = require('../libs/sendInfoToUser');
 
 function compute(options) {
 	if (!options) return 0;
@@ -31,8 +30,5 @@ module.exports = (...args) => {
 		});
 
 		return delay;
-	} catch (err) {
-		sendInfo('Error in transition options', 0);
-		throw new OptionsError(err);
-	}
+	} catch (err) { throw new OptionsError(`Error in transition options ${err}`); }
 };

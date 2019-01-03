@@ -5,9 +5,7 @@ function hasCssRules(options) {
 	const className = `.${options}`;
 
 	for (const el of document.styleSheets) {
-		for (const rule of el.rules) {
-			if (className === rule.selectorText) return true;
-		}
+		for (const rule of el.rules) if (className === rule.selectorText) return true;
 	}
 
 	return false;
