@@ -3,7 +3,6 @@ const getDelay = require('../../libs/getDelay');
 const setStyle = require('../../libs/setStyle');
 
 function step(box, options) {
-	box.style.transition = options.transition;
 	setStyle(box, options);
 
 	return promise(getDelay(options.transition));
