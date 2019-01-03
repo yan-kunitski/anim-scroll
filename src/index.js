@@ -10,7 +10,7 @@ class SnapScroll {
 		this._target = target;
 		this._activeSlide = { value: 0 };
 		this._options = validateOptions(options);
-		this._box = init(this._target, options.targetStyle);
+		this._box = init(this._target, this._options.targetStyle);
 		this._ss = tuneBox(this._box, this._options);
 
 		onEvent(this._ss, this._options, this._activeSlide);
