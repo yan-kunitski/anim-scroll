@@ -8,7 +8,7 @@ module.exports = (target, options) => {
 
 	if (!box) {
 		sendInfo('There is some error in terget name', 0);
-		throw new OptionsError(`Your target ${target} is not defined`);
+		throw new OptionsError(`Your target [${target}] is not defined`);
 	} else setStyle(box, options);
 
 	return box;
