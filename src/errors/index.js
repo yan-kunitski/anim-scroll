@@ -6,7 +6,7 @@ class OptionsError extends Error {
 	}
 }
 
-class RenderError extends Error {
+class AnimationError extends Error {
 	constructor(msg) {
 		super();
 		this.message = msg;
@@ -15,4 +15,4 @@ class RenderError extends Error {
 }
 
 module.exports.OptionsError = OptionsError;
-module.exports.RenderError = RenderError;
+module.exports.AnimationError = AnimationError;
