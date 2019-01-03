@@ -1,21 +1,30 @@
 const config = require('../config');
+const isMobile = require('../libs/isMobile');
+const styleSheetToObj = require('../libs/styleSheetToObj');
+const sendInfoToUser = require('../libs/sendInfoToUser');
 const { OptionsError } = require('../errors');
 
+const concatTr = (tr = '0s', delay = '0s') => `${tr} ${delay}`;
+
+function fieldCorrection(options) {
+	if (typeof options === 'string') {
+		if (options[0] === '.') options = styleSheetToObj(options);
+		else throw new OptionsError(`Expected class name, received string [${options}]`);
+	} else if (options instanceof Object && options.transitionDelay) {
+		options.transition = concatTr(options.transition, options.transitionDelay);
+		delete options.transitionDelay;
+	}
+
+	return options;
+}
+
 function validateFields(options, conf) {
-	for (const el in conf) {
-		if (Object.prototype.hasOwnProperty.call(conf, el)) {
-			if (!options[el]) {
-				options[el] = conf[el];
-				continue;
-			}
-			if (el === 'active' || el === 'next') {
-				if (options[el].length < 2) throw new OptionsError('The minimum number of animation steps is 2');
-				if (options[el].length > 0) continue;
-			}
-			if (options[el] instanceof Object) {
-				validateFields(options[el], conf[el]);
-			}
-		}
+	for (const key in options) {
+		if (options[key] instanceof Object && !/hints|hintStyle|shape|usual|hover|active|next|prev|wrapper/.test(key)) {
+			validateFields(options[key], conf[key]);
+		} else if (options[key] instanceof Array && key !== 'hints') {
+			options[key].forEach((el, i) => { conf[key][i] = fieldCorrection(el); });
+		} else conf[key] = fieldCorrection(options[key]);
 	}
 }
 
@@ -27,23 +36,26 @@ function setRev(options) {
 	frames.reverse().map((el, i) => {
 		index = i === 0 ? i : animLength - i;
 		el.transition = options[index].transition;
-
+		if (options[index].webkitTransition) el.webkitTransition = options[index].webkitTransition;
 		return el;
 	});
 
 	return frames;
 }
 
-const setDelaySlide = (arr, options) => { arr.unshift({ transition: `0s ${options.slideAnimation.delayBetweenSlides}` }); };
+const setDelaySlide = (arr, delay) => { arr.splice(1, 0, { transition: `0s ${delay}ms` }); };
 
 module.exports = options => {
-	validateFields(options, config);
-	options.slideAnimationRev = {
-		active: setRev(options.slideAnimation.next),
-		next: setRev(options.slideAnimation.active),
-	};
-	setDelaySlide(options.slideAnimation.next, options);
-	setDelaySlide(options.slideAnimationRev.next, options);
+	try {
+		validateFields(options, config);
+		config.slideAnimationRev = {
+			active: setRev(config.slideAnimation.next),
+			next: setRev(config.slideAnimation.active),
+		};
+		setDelaySlide(config.slideAnimation.next, config.delayBetweenSlides);
+		setDelaySlide(config.slideAnimationRev.next, config.delayBetweenSlides);
+		config.isMobile = isMobile();
+	} catch (err) { sendInfoToUser(`Error during validation options ${err}`, 0); }
 
-	return options;
+	return config;
 };
