@@ -2,15 +2,12 @@ const config = require('../config');
 const isMobile = require('../libs/isMobile');
 const styleSheetToObj = require('../libs/styleSheetToObj');
 const sendInfoToUser = require('../libs/sendInfoToUser');
-const { OptionsError } = require('../errors');
 
 const concatTr = (tr = '0s', delay = '0s') => `${tr} ${delay}`;
 
 function fieldCorrection(options) {
-	if (typeof options === 'string') {
-		if (options[0] === '.') options = styleSheetToObj(options);
-		else throw new OptionsError(`Expected class name, received string [${options}]`);
-	} else if (options instanceof Object && options.transitionDelay) {
+	if (typeof options === 'string' && options[0] === '.') options = styleSheetToObj(options);
+	else if (options instanceof Object && options.transitionDelay) {
 		options.transition = concatTr(options.transition, options.transitionDelay);
 		delete options.transitionDelay;
 	}
@@ -55,7 +52,7 @@ module.exports = options => {
 		setDelaySlide(config.slideAnimation.next, config.delayBetweenSlides);
 		setDelaySlide(config.slideAnimationRev.next, config.delayBetweenSlides);
 		config.isMobile = isMobile();
-	} catch (err) { sendInfoToUser(`Error during validation options ${err}`, 0); }
+	} catch (err) { sendInfoToUser(`Error during validation options. ${err}`, 0); }
 
 	return config;
 };
