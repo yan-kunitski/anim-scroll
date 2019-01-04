@@ -28,12 +28,12 @@ module.exports = (direction, wrapper, options, activeSlide) => {
 			{
 				active: [{ '': '' }],
 				next: [
-					options.arrowsStyle.arrows.active,
-					options.arrowsStyle.arrows.usual,
+					options.arrowStyle.arrows.active,
+					options.arrowStyle.arrows.usual,
 				],
 			});
 		}
-	} catch (err) { sendInfoToUser(`Animation error ${err}`); }
+	} catch (err) { sendInfoToUser(`Animation error. ${err}`); }
 
 	return promise(delay);
 };

@@ -3,19 +3,19 @@ const getElement = require('../../libs/getElement');
 const setSsClick = require('./setSsClick');
 
 module.exports = (box, options) => {
-	const arrow = getElement(options.arrowsStyle.arrows.shape);
+	const arrow = getElement(options.arrowStyle.arrows.shape);
 	const arrowNext = document.createElement('div');
-	const prevTransform = options.arrowsStyle.arrows.usual.transform;
+	const prevTransform = options.arrowStyle.arrows.usual.transform;
 	let arrowPrev = {};
 
-	setStyle(arrow, options.arrowsStyle.arrows.usual);
+	setStyle(arrow, options.arrowStyle.arrows.usual);
 	arrowNext.appendChild(arrow);
-	setStyle(arrowNext, options.arrowsStyle.wrapper);
+	setStyle(arrowNext, options.arrowStyle.wrapper);
 	arrowNext.style.position = 'absolute';
 	arrowPrev = arrowNext.cloneNode(true);
 	arrowPrev.style.transform = `rotate(180deg) ${prevTransform || ''}`;
-	setStyle(arrowNext, options.arrowsStyle.arrowsPositions.next);
-	setStyle(arrowPrev, options.arrowsStyle.arrowsPositions.prev);
+	setStyle(arrowNext, options.arrowStyle.arrowsPositions.next);
+	setStyle(arrowPrev, options.arrowStyle.arrowsPositions.prev);
 	box.appendChild(arrowPrev);
 	box.appendChild(arrowNext);
 	setSsClick(arrowPrev, 'prev');

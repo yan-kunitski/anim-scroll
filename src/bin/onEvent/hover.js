@@ -6,7 +6,7 @@ module.exports = (wrapper, options, activeSlide) => {
 	const nB = wrapper.navBar ? wrapper.navBar.children : {};
 	const nS = wrapper.navBar ? options.navBarStyle.dots : {};
 	const aR = wrapper.arrows || {};
-	const aS = wrapper.arrows ? options.arrowsStyle.arrows : {};
+	const aS = wrapper.arrows ? options.arrowStyle.arrows : {};
 	let state = '';
 	let zIndex = '';
 	let opacity = 0;

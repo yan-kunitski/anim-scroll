@@ -4,24 +4,16 @@
 	"autoScroll":false,
 	"infinite":false,
 	"scrollSensitivity":100,
-	"delayBetweenSlides": 1000,
+	"delayBetweenSlides": 800,
 	"targetStyle":{
 		"display":"flex",
 		"justifyContent":"center",
 		"alignItems":"center"
 	},
-	"hints":[
-		"first",
-		"second",
-		"third",
-		"fourth",
-		"fivth",
-		"sixth",
-		"seventh"
-	],
+	"hints":[],
 	"hintStyle":{
 		"color":"#fafafa",
-		"fontSize":"18px",
+		"fontSize":"16px",
 		"transition":".2s ease",
 		"indent":"10px"
 	},
@@ -29,7 +21,7 @@
 		"width":"100%",
 		"height":"100%"
 	},
-	"arrowsStyle":{
+	"arrowStyle":{
 		"wrapper":{
 			"display":"block"
 		},
@@ -43,15 +35,20 @@
 			},
 			"usual":{
 				"transition":".2s",
-				"clipPath":"polygon(50% 90%, 100% 50%, 50% 100%, 0% 50%)"
+				"clipPath":"polygon(50% 90%, 100% 50%, 50% 100%, 0% 50%)",
+				"webkitClipPath":"polygon(50% 90%, 100% 50%, 50% 100%, 0% 50%)"
 			},
 			"hover":{
 				"transition":".2s",
-				"clipPath":"polygon(50% 80%, 100% 50%, 50% 100%, 0% 50%)"
+				"clipPath":"polygon(50% 80%, 100% 50%, 50% 100%, 0% 50%)",
+				"webkitClipPath":"polygon(50% 80%, 100% 50%, 50% 100%, 0% 50%)"
+
 			},
 			"active":{
 				"transition":".2s",
-				"clipPath":"polygon(50% 70%, 100% 50%, 50% 100%, 0% 50%)"
+				"clipPath":"polygon(50% 70%, 100% 50%, 50% 100%, 0% 50%)",
+				"webkitClipPath":"polygon(50% 70%, 100% 50%, 50% 100%, 0% 50%)"
+
 			}
 		},
 		"arrowsPositions":{
@@ -82,7 +79,7 @@
 			"usual":{
 				"transition":".15s",
 				"transform":"scale(1)",
-				"border":"3px solid red"
+				"border":"3px solid #fafafa"
 			},
 			"hover":{
 				"transition":".15s",
@@ -95,8 +92,8 @@
 				"transform":"scale(1.3)"
 			},
 			"wrapper":{
-				"marginTop":"4px",
-				"marginBottom":"4px"
+				"marginTop":"10px",
+				"marginBottom":"10px"
 			}
 		}
 	},
@@ -109,30 +106,18 @@
 				"opacity":"1"
 			},
 			{
-				"top":"0%",
+				"top":"-100%",
 				"transition":".8s ease",
 				"transform":"scale(0.7)",
 				"opacity":"0.3"
-			},
-			{
-				"top":"-100%",
-				"transition":".2s ease",
-				"transform":"scale(0.4)",
-				"opacity":"0"
 			}
 		],
 		"next":[
 			{
 				"top":"100%",
 				"transition":"0s",
-				"transform":"scale(0.8)",
+				"transform":"scale(0.4)",
 				"opacity":"0"
-			},
-			{
-				"top":"0%",
-				"transition":".2s ease",
-				"transform":"scale(0.9)",
-				"opacity":"0.3"
 			},
 			{
 				"top":"0%",
