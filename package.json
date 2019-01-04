@@ -23,6 +23,7 @@
 		"eslint-plugin-import": "^2.14.0"
 	},
 	"files": [
-		"dist"
+		"dist",
+		"README.md"
 	]
 }
