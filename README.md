@@ -10,7 +10,7 @@ Snap-scroll starts simultaneous sequential receiving of styles, taken from array
 ### Usage
 **Terminal**
 To install the library:
-    npm i snap-scroll
+`npm i snap-scroll`
 **HTML**
 Here is the basic structure:
 ```html
