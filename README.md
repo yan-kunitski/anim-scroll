@@ -41,6 +41,7 @@ const snap = new SnapScroll('#snap-box'/*, { your options here }*/)
 ### Options
 #### Main
 >You can see (and/or use) a couple of examples in the "templates" folder of this repository.
+
 The main options in which the snapScroll object is configured:
 ```js
 {
