@@ -1,5 +1,4 @@
-Snap-scroll
--------------
+##Snap-scroll
 
 Snap-scroll is a library for easy creation of animated page scrolling. Works on mobile devices as well as on all desktop browsers and IE 9+.
 ---
