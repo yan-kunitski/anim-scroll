@@ -2,7 +2,8 @@ Snap-scroll
 ----------------
 Snap-scroll is a library for easy creation of animated page scrolling. Works on mobile devices as well as on all desktop browsers and IE 9+.
 
-`How it comes:`
+**How it comes:**
+
 There are two arrays: the first for the active slide, the second for the next.
 Each of the arrays is filled with style objects (or class names // read below), which describe the state of the slides at different points in time.
 Snap-scroll starts simultaneous sequential receiving of styles, taken from arrays of objects, to the corresponding slides.
@@ -120,6 +121,7 @@ The first object in the array must contain the initial state of the slide. This 
 ```
 The second and subsequent style objects can contain absolutely any CSS options.
 >You can see (and/or use) a couple of examples in the "templates" folder of this repository.
+
 For example:
 ```js
 	slideAnimation: {
