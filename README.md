@@ -32,7 +32,7 @@ If you need full-screen usage, just add classes to your blocks:
 ```
 Or add the necessary styles to the options object.
 #### JS
-The class constructor takes two parameters as input. The first is the `target`, it is required. The second is options object, it is optional:
+The class constructor takes two parameters as input. The first is the `target`, it is required. The second is `options object`, it is optional:
 ```js
 import SnapScroll from 'snap-scroll';
 
@@ -40,6 +40,7 @@ const snap = new SnapScroll('#snap-box'/*, { your options here }*/)
 ```
 ### Options
 #### Main
+>You can see (and/or use) a couple of examples in the "templates" folder of this repository.
 The main options in which the snapScroll object is configured:
 ```js
 {
@@ -52,10 +53,13 @@ The main options in which the snapScroll object is configured:
 	hints: [ 'first', 'second', /* ... */]
 }
 ```
-`infinite`: allows you to jump from first to last slide and vice versa when you click on the navigation arrows
-`scrollSensitivity`: sets up how much you need to scroll the page for the animation to work
-`delayBetweenSlides`: sets the delay between the animations of the current slide and the next slide
-`hints`: an array of hints that pop up when you hover over a navigation pointer
+`infinite`: allows you to jump from first to last slide and vice versa when you click on the navigation arrows.
+
+`scrollSensitivity`: sets up how much you need to scroll the page for the animation to work.
+
+`delayBetweenSlides`: sets the delay between the animations of the current slide and the next slide.
+
+`hints`: an array of hints that pop up when you hover over a navigation pointer.
 #### Styles
 All style fields support either an object with styles or a CSS class name.
 For example:
@@ -70,7 +74,7 @@ For example:
 	tragetStyle: '.my-target-class'
 }
 ```
-`Here are the style fields:`
+Here are the style fields:
 ```js
 {
 	targetStyle: { // default
@@ -108,12 +112,13 @@ For example:
 }
 ```
 #### Slide animation
-Slides animation is defined by two arrays. Each of the arrays must contain style objects or class names (you can also combine objects and class names in the same array). `The minimum number` of style objects in an array is 2.
-The first object in the array must contain the initial state of the slide. This state `should not be animated`, it means:
+Slides animation is defined by two arrays. Each of the arrays must contain style objects or class names (you can also combine objects and class names in the same array). **The minimum number** of style objects in an array is 2.
+The first object in the array must contain the initial state of the slide. This state **should not be animated**, it means:
 ```js
 	{ transition: '0s 0s' }
 ```
-The second and subsequent style objects can contain absolutely any CSS options. You can see (and/or use) a couple of examples in the "templates" folder of this repository.
+The second and subsequent style objects can contain absolutely any CSS options.
+>You can see (and/or use) a couple of examples in the "templates" folder of this repository.
 For example:
 ```js
 	slideAnimation: {
