@@ -1,13 +1,13 @@
-##Snap-scroll
-
+Snap-scroll
+----------------
 Snap-scroll is a library for easy creation of animated page scrolling. Works on mobile devices as well as on all desktop browsers and IE 9+.
----
+
 `How it comes:`
 There are two arrays: the first for the active slide, the second for the next.
 Each of the arrays is filled with style objects (or class names // read below), which describe the state of the slides at different points in time.
 Snap-scroll starts simultaneous sequential receiving of styles, taken from arrays of objects, to the corresponding slides.
----
-###Usage
+
+### Usage
 **Terminal**
 To install the library:
     npm i snap-scroll
@@ -36,9 +36,8 @@ import SnapScroll from 'snap-scroll';
 
 const snap = new SnapScroll('#snap-box'/*, { your options here }*/)
 ```
----
-###Options###
-####Main
+### Options
+#### Main
 The main options in which the snapScroll object is configured:
 ```js
 {
@@ -55,8 +54,7 @@ The main options in which the snapScroll object is configured:
 `scrollSensitivity`: sets up how much you need to scroll the page for the animation to work
 `delayBetweenSlides`: sets the delay between the animations of the current slide and the next slide
 `hints`: an array of hints that pop up when you hover over a navigation pointer
----
-####Styles
+#### Styles
 All style fields support either an object with styles or a CSS class name.
 For example:
 ```js
@@ -107,8 +105,7 @@ For example:
 	}
 }
 ```
----
-####Slide animation
+#### Slide animation
 Slides animation is defined by two arrays. Each of the arrays must contain style objects or class names (you can also combine objects and class names in the same array). `The minimum number` of style objects in an array is 2.
 The first object in the array must contain the initial state of the slide. This state `should not be animated`, it means:
 ```js
@@ -146,8 +143,7 @@ For example:
 		]
 	}
 ```
----
-###API
+### API
 goTo()
 next()
 prev()
