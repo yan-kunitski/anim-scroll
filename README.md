@@ -13,7 +13,7 @@ To install the library:
 `npm i snap-scroll`
 **HTML**
 Here is the basic structure:
-```html
+```terminal
 <div id="snap-box">
 	<div>First slide</div>
 	<div>Second slide</div>
