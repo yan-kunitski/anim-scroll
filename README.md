@@ -8,12 +8,14 @@ Each of the arrays is filled with style objects (or class names // read below), 
 Snap-scroll starts simultaneous sequential receiving of styles, taken from arrays of objects, to the corresponding slides.
 
 ### Usage
-**Terminal**
+#### Terminal
 To install the library:
-`npm i snap-scroll`
-**HTML**
-Here is the basic structure:
 ```terminal
+npm i snap-scroll
+```
+#### HTML
+Here is the basic structure:
+```html
 <div id="snap-box">
 	<div>First slide</div>
 	<div>Second slide</div>
@@ -29,7 +31,7 @@ If you need full-screen usage, just add classes to your blocks:
 }
 ```
 Or add the necessary styles to the options object.
-**JS**
+#### JS
 The class constructor takes two parameters as input. The first is the `target`, it is required. The second is options object, it is optional:
 ```js
 import SnapScroll from 'snap-scroll';
