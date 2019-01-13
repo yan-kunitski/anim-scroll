@@ -1,21 +1,21 @@
 {
 	"navBar":true,
-	"navBarArrows":true,
+	"navArrows":true,
 	"autoScroll":false,
 	"infinite":false,
 	"scrollSensitivity":100,
-	"delayBetweenSlides": 800,
-	"targetStyle":{
-		"display":"flex",
-		"justifyContent":"center",
-		"alignItems":"center"
-	},
+	"delayBetweenSlides": 400,
 	"hints":[],
 	"hintStyle":{
 		"color":"#fafafa",
 		"fontSize":"16px",
 		"transition":".2s ease",
 		"indent":"10px"
+	},
+	"targetStyle":{
+		"display":"flex",
+		"justifyContent":"center",
+		"alignItems":"center"
 	},
 	"slideStyle":{
 		"width":"100%",

@@ -12,7 +12,7 @@ module.exports = (box, options) => {
 		slides = setSlides(box, options);
 
 		if (options.navBar) navBar = setNavBar(box, options, slides.children.length);
-		if (options.navBarArrows) arrows = setArrows(box, options);
+		if (options.navArrows) arrows = setArrows(box, options);
 	} catch (err) { sendInfo(`Error during setup of slides and/or navbar. ${err}`); }
 
 	return {
