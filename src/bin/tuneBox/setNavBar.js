@@ -86,7 +86,7 @@ module.exports = (box, options, amount) => {
 		navBar.appendChild(el);
 	}
 
-	setStyle(dot, options.navBarStyle.dots.active);
+	setStyle(navBar.children[options.whereToBegin].children[options.dotIndex], options.navBarStyle.dots.active);
 
 	const block = document.createElement('div');
 
