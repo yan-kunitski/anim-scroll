@@ -63,8 +63,9 @@ class SnapScroll {
 	prev() { return this.goTo('prev'); }
 
 	auto(delay, direction = 'next') {
+		const interval = this._options.animDuration + delay;
+
 		return new Promise(resolve => {
-			const interval = this._options.animDuration + delay;
 			const autoScroll = setInterval(() => {
 				if (!this._options.infinite && this._activeSlide.value === this._options.lastSI) {
 					resolve();
