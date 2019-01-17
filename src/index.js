@@ -5,15 +5,50 @@ const tuneBox = require('./bin/tuneBox');
 const onEvent = require('./bin/onEvent');
 const animation = require('./bin/animation');
 
+const build = (instance, target, options) => {
+	instance._target = target;
+	instance._activeSlide = { value: options.whereToBegin };
+	instance._box = init(instance._target);
+	instance._options = validateOptions(options, instance._box);
+	instance._initial = instance._box.cloneNode(true);
+	instance._parent = instance._initial.parentElement || document.body;
+	instance._ss = tuneBox(instance._box, instance._options);
+	onEvent(instance._ss, instance._options, instance._activeSlide);
+
+	if (options.autoScroll) instance.auto(instance._options.autoScroll);
+};
+
+const destroy = instance => {
+	instance._parent.replaceChild(instance._initial, instance._box);
+	if (instance._target instanceof Element) instance._target = instance._initial;
+};
+
 class SnapScroll {
 	constructor(target, options = config) {
-		this._target = target;
-		this._activeSlide = { value: 0 };
-		this._options = validateOptions(options);
-		this._box = init(this._target, this._options.targetStyle);
-		this._ss = tuneBox(this._box, this._options);
+		build(this, target, options);
+	}
 
-		onEvent(this._ss, this._options, this._activeSlide);
+	get target() {
+		return this._target;
+	}
+
+	get options() {
+		return this._options;
+	}
+
+	get activeSlide() {
+		return this._activeSlide;
+	}
+
+	set target(name) {
+		destroy(this);
+		build(this, name, this._options);
+	}
+
+	set options(obj) {
+		destroy(this);
+		obj.whereToBegin = this._activeSlide.value;
+		build(this, this._target, obj);
 	}
 
 	goTo(slideIndex) {
@@ -23,9 +58,22 @@ class SnapScroll {
 		});
 	}
 
-	next() { return this.goTo(this._activeSlide.value + 1); }
+	next() { return this.goTo('next'); }
 
-	prev() { return this.goTo(this._activeSlide.value - 1); }
+	prev() { return this.goTo('prev'); }
+
+	auto(delay, direction = 'next') {
+		return new Promise(resolve => {
+			const interval = this._options.animDuration + delay;
+			const autoScroll = setInterval(() => {
+				if (!this._options.infinite && this._activeSlide.value === this._options.lastSI) {
+					resolve();
+					clearInterval(autoScroll);
+				}
+				this.goTo(direction);
+			}, interval);
+		});
+	}
 }
 
 module.exports = SnapScroll;
