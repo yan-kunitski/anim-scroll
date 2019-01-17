@@ -1,14 +1,11 @@
 const frames = require('./frames');
 const promise = require('../../libs/promise');
-const getDelay = require('../../libs/getDelay');
 const getTape = require('./getTape');
 const sendInfoToUser = require('../../libs/sendInfoToUser');
 
 module.exports = (direction, wrapper, options, activeSlide) => {
-	let delay;
 	try {
-		const { slideTape, navTape, tapeD } = getTape(direction, wrapper, activeSlide, options.dotIndex);
-		delay = getDelay(options.slideAnimation.active, options.slideAnimation.next);
+		const { slideTape, navTape, tapeD } = getTape(direction, wrapper, activeSlide, options.dotIndex, options.infinite);
 
 		if (slideTape.now === slideTape.next) return promise(0);
 
@@ -35,5 +32,5 @@ module.exports = (direction, wrapper, options, activeSlide) => {
 		}
 	} catch (err) { sendInfoToUser(`Animation error. ${err}`); }
 
-	return promise(delay);
+	return promise(options.animDuration);
 };
