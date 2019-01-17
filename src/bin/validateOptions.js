@@ -2,6 +2,7 @@ const config = require('../config');
 const isMobile = require('../libs/isMobile');
 const styleSheetToObj = require('../libs/styleSheetToObj');
 const sendInfoToUser = require('../libs/sendInfoToUser');
+const getDelay = require('../libs/getDelay');
 
 const concatTr = (tr = '0s', delay = '0s') => `${tr} ${delay}`;
 
@@ -42,7 +43,7 @@ function setRev(options) {
 
 const setDelaySlide = (arr, delay) => { arr.splice(1, 0, { transition: `0s ${delay}ms` }); };
 
-module.exports = options => {
+module.exports = (options, box) => {
 	try {
 		validateFields(options, config);
 		config.slideAnimationRev = {
@@ -52,6 +53,8 @@ module.exports = options => {
 		setDelaySlide(config.slideAnimation.next, config.delayBetweenSlides);
 		setDelaySlide(config.slideAnimationRev.next, config.delayBetweenSlides);
 		config.isMobile = isMobile();
+		config.lastSI = box.children.length - 1;
+		config.animDuration = getDelay(config.slideAnimation.active, config.slideAnimation.next);
 	} catch (err) { sendInfoToUser(`Error during validation options. ${err}`, 0); }
 
 	return config;
