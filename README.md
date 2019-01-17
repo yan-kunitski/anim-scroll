@@ -33,7 +33,7 @@ If you need full-screen usage, just add classes to your blocks:
 ```
 Or add the necessary styles to the options object.
 #### JS
-The class constructor takes two parameters as input. The first is the `target`, it is required. The second is `options object`, it is optional:
+The class constructor takes two parameters as input. The first is the `target`, it is required. The `target type` can be a 'String' or an ['Element'](https://developer.mozilla.org/ru/docs/Web/API/Element) (HTMLElement). The second is `options object`, it is optional:
 ```js
 import SnapScroll from 'snap-scroll';
 
@@ -52,6 +52,7 @@ The main options in which the snapScroll object is configured:
 	infinite: false,
 	scrollSensitivity: 100, // px
 	delayBetweenSlides: 400, // ms
+	whereToBegin: 0, // this slide will open first after page load
 	hints: [ 'first', 'second', /* ... */]
 }
 ```
@@ -64,6 +65,7 @@ The main options in which the snapScroll object is configured:
 `hints`: an array of hints that pop up when you hover over a navigation pointer.
 #### Styles
 All style fields support either an object with styles or a CSS class name.
+In addition, the 'shape' field also supports an object of type ['Element'](https://developer.mozilla.org/ru/docs/Web/API/Element)
 For example:
 ```js
 {
@@ -117,7 +119,7 @@ Here are the style fields:
 Slides animation is defined by two arrays. Each of the arrays must contain style objects or class names (you can also combine objects and class names in the same array). **The minimum number** of style objects in an array is 2.
 The first object in the array must contain the initial state of the slide. This state **should not be animated**, it means:
 ```js
-	{ transition: '0s 0s' }
+{ transition: '0s 0s' }
 ```
 The second and subsequent style objects can contain absolutely any CSS options.
 >You can see (and/or use) a couple of examples in the "templates" folder of this repository.

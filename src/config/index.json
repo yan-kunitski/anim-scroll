@@ -1,10 +1,11 @@
 {
 	"navBar":true,
 	"navArrows":true,
-	"autoScroll":false,
+	"autoScroll": false,
 	"infinite":false,
 	"scrollSensitivity":100,
 	"delayBetweenSlides": 400,
+	"whereToBegin": 0,
 	"hints":[],
 	"hintStyle":{
 		"color":"#fafafa",
