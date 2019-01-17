@@ -4,6 +4,7 @@ module.exports = (box, options) => {
 	const wrapper = document.createElement('div');
 	const childs = [...box.children];
 
+	setStyle(box, options.targetStyle);
 	box.appendChild(wrapper);
 	box.style.overflow = 'hidden';
 	box.style.position = 'relative';
@@ -15,8 +16,8 @@ module.exports = (box, options) => {
 		childs[i].style.height = '100%';
 		childs[i].style.width = '100%';
 		childs[i].style.position = 'absolute';
-		if (i !== 0) setStyle(childs[i], options.slideAnimation.next[0]);
-		else childs[i].style.transition = options.slideAnimation.active[0].transition;
+		if (i === options.whereToBegin) childs[i].style.transition = options.slideAnimation.active[0].transition;
+		else setStyle(childs[i], options.slideAnimation.next[0]);
 		wrapper.appendChild(childs[i]);
 	}
 
