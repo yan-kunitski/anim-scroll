@@ -156,6 +156,25 @@ For example:
 	}
 ```
 ### API
-goTo()
-next()
-prev()
+#### Getters
+```js
+console.log(snap.target); // returns your target
+console.log(snap.options); // returns validated options
+console.log(snap.activeSlide); // returns the index of the active slide
+```
+#### Setters
+```js
+snap.target = '#new-target'; // destroys '#previous-target' and builds '#new-target'
+
+snap.options = { /* options */ }; // rebuilds with new options
+
+snap.goTo(slideIndex /* number */); // goes to slide with given index (countdown starts from 0);
+
+snap.next(); // goes to the next slide;
+
+snap.prev(); // goes to the previous slide;
+
+snap.auto(delay /* ms */); // starts autoscrolling.
+
+```
+Methods 'goTo()', 'next()', 'prev()' return a `promise` that will be resolved at the end of the animation. Method 'auto()' also returns a promise, but it will be resolved only if `options.infinite: false`. The parameter that accepts the method 'auto()' sets the delay between the transitions to the next slides.
