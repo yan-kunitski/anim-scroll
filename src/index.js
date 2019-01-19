@@ -20,6 +20,7 @@ const build = (instance, target, options) => {
 
 const destroy = instance => {
 	instance._parent.replaceChild(instance._initial, instance._box);
+
 	if (instance._target instanceof Element) instance._target = instance._initial;
 };
 
@@ -37,7 +38,7 @@ class SnapScroll {
 	}
 
 	get activeSlide() {
-		return this._activeSlide;
+		return this._activeSlide.value;
 	}
 
 	set target(name) {
