@@ -82,35 +82,35 @@ Here are the style fields:
 ```js
 {
   targetStyle: { // default
-	display: 'flex',
-	justifyContent: 'center',
-	alignItems: 'center'
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center'
   },
   hintStyle: {
-	indent: '10px' // sets the gap in 'px' between the hint and the navigation link 
+    indent: '10px' // sets the gap in 'px' between the hint and the navigation link 
   }, 
   slideStyle: {},
   arrowStyle: {
-	wrapper: {},
-	arrowsPositions: {
-	  next: { bottom: '2vh' },
-	  prev: { top: '2vh' }
+    wrapper: {},
+    arrowsPositions: {
+      next: { bottom: '2vh' },
+      prev: { top: '2vh' }
 	},
-	arrows: {
-	  shape: {},
-	  usual: {},
-	  hover: {},
-	  active: {}
+    arrows: {
+      shape: {},
+      usual: {},
+      hover: {},
+      active: {}
   }
 },
   navBarStyle: {
-	wrapper: {},
-	dots: {
-	  shape: {},
-	  usual: {},
-	  hover: {},
-	  active: {}
-	  wrapper: {}
+    wrapper: {},
+    dots: {
+      shape: {},
+      usual: {},
+      hover: {},
+      active: {}
+      wrapper: {}
 	}
   }
 }
@@ -128,32 +128,32 @@ For example:
 ```js
 {
   slideAnimation: {
-	active: [
-	  {
-		transition: '0s',
-		top: '0',
-		transform: 'scale(1) rotate(0deg)'
-	  },
-	  {
-		transition: '.2s ease .1s',
-		top: '0',
-		transform: 'scale(1.2)'
-	  },
-	  {
-		transition: '.4s',
-		transitionDelay: '.1s',
-		top: '-100%',
-		transform: 'scale(0.5) rotate(10deg)'
-	  }
-	],
-	next: [
-	  {
-		transition: '0s',
-		top: '100%',
-		transform: 'scale(1) rotate(0deg)'
-	  },
-		'.your-next-slide-animation-class'
-	]
+    active: [
+      {
+        transition: '0s',
+        top: '0',
+        transform: 'scale(1) rotate(0deg)'
+      }, 
+      {
+        transition: '.2s ease .1s',
+        top: '0',
+        transform: 'scale(1.2)'
+      },
+      {
+        transition: '.4s',
+        transitionDelay: '.1s',
+        top: '-100%',
+        transform: 'scale(0.5) rotate(10deg)'
+      }
+    ],
+    next: [
+      {
+        transition: '0s',
+        top: '100%',
+        transform: 'scale(1) rotate(0deg)'
+      },
+        '.your-next-slide-animation-class'
+    ]
   }
 }
 ```
@@ -189,4 +189,5 @@ The transpiled library uses ES6 features such as: generators, classes, arrow fun
 * Firefox: 53
 * Safari: 10
 * Edge: 13
+
 If you need ES5 support you can use [babel](https://babeljs.io/docs/en/babel-preset-env) in your project.
