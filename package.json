@@ -5,13 +5,12 @@
 	},
 	"description": "Small library to animate your web pages",
 	"scripts": {
-		"build": "npx babel src --out-dir dist",
-		"prepublishOnly": "npm run build"
+		"build": "npx babel src --out-dir dist"
 	},
 	"license": "MIT",
 	"main": "src/index.js",
 	"name": "anim-scroll",
-	"version": "0.1.6",
+	"version": "0.1.7",
 	"devDependencies": {
 		"@babel/cli": "^7.2.3",
 		"@babel/core": "^7.2.2",
