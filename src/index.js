@@ -7,12 +7,12 @@ const animation = require('./bin/animation');
 
 const build = (instance, target, options) => {
 	instance._target = target;
-	instance._activeSlide = { value: options.whereToBegin };
 	instance._box = init(instance._target);
 	instance._options = validateOptions(options, instance._box);
 	instance._initial = instance._box.cloneNode(true);
 	instance._parent = instance._initial.parentElement || document.body;
 	instance._ss = tuneBox(instance._box, instance._options);
+	instance._activeSlide = { value: instance._options.whereToBegin };
 	onEvent(instance._ss, instance._options, instance._activeSlide);
 
 	if (options.autoScroll) instance.auto(instance._options.autoScroll);
@@ -24,7 +24,7 @@ const destroy = instance => {
 	if (instance._target instanceof Element) instance._target = instance._initial;
 };
 
-class SnapScroll {
+class AnimScroll {
 	constructor(target, options = config) {
 		build(this, target, options);
 	}
@@ -78,4 +78,4 @@ class SnapScroll {
 	}
 }
 
-module.exports = SnapScroll;
+module.exports = AnimScroll;
