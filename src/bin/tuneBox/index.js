@@ -1,7 +1,6 @@
 const setSlides = require('./setSlide');
 const setNavBar = require('./setNavBar');
 const setArrows = require('./setArrows');
-const sendInfo = require('../../libs/sendInfoToUser');
 
 module.exports = (box, options) => {
 	let slides = {};
@@ -13,7 +12,10 @@ module.exports = (box, options) => {
 
 		if (options.navBar) navBar = setNavBar(box, options, slides.children.length);
 		if (options.navArrows) arrows = setArrows(box, options);
-	} catch (err) { sendInfo(`Error during setup of slides and/or navbar. ${err}`); }
+	} catch (err) {
+		console.warn('Error during setup of slides and/or navbar.');
+		console.error(err);
+	}
 
 	return {
 		slides,

@@ -1,7 +1,6 @@
 const config = require('../config');
 const isMobile = require('../libs/isMobile');
 const styleSheetToObj = require('../libs/styleSheetToObj');
-const sendInfoToUser = require('../libs/sendInfoToUser');
 const getDelay = require('../libs/getDelay');
 
 const concatTr = (tr = '0s', delay = '0s') => `${tr} ${delay}`;
@@ -55,7 +54,10 @@ module.exports = (options, box) => {
 		config.isMobile = isMobile();
 		config.lastSI = box.children.length - 1;
 		config.animDuration = getDelay(config.slideAnimation.active, config.slideAnimation.next);
-	} catch (err) { sendInfoToUser(`Error during validation options. ${err}`, 0); }
+	} catch (err) {
+		console.warn('Error during validation options.');
+		console.error(err);
+	}
 
 	return config;
 };

@@ -1,7 +1,6 @@
 const frames = require('./frames');
 const promise = require('../../libs/promise');
 const getTape = require('./getTape');
-const sendInfoToUser = require('../../libs/sendInfoToUser');
 
 module.exports = (direction, wrapper, options, activeSlide) => {
 	try {
@@ -30,7 +29,10 @@ module.exports = (direction, wrapper, options, activeSlide) => {
 				],
 			});
 		}
-	} catch (err) { sendInfoToUser(`Animation error. ${err}`); }
+	} catch (err) {
+		console.warn('Animation error.');
+		console.error(err);
+	}
 
 	return promise(options.animDuration);
 };
