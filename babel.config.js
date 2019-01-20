@@ -4,12 +4,17 @@ module.exports = {
 			'@babel/preset-env',
 			{
 				targets: {
-					ie: '10',
+					ie: '9',
 				},
 			},
 		],
 	],
 	plugins: [
-		['@babel/plugin-transform-runtime'],
+		['@babel/plugin-transform-runtime', {
+			helpers: false,
+			corejs: false,
+			regenerator: true,
+			useESModules: false,
+		}],
 	],
 };
