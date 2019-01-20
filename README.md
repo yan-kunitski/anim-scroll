@@ -1,23 +1,23 @@
-Snap-scroll
+Anim-scroll
 ----------------
-Snap-scroll is a library for easy creation of animated page scrolling. Works on mobile devices as well as on all desktop browsers and IE 9+.
+Anim-scroll is a library for easy creation of animated page scrolling. Works on mobile devices as well as on all desktop browsers and IE 9+.
 
 **How it comes:**
 
 There are two arrays: the first for the active slide, the second for the next.
 Each of the arrays is filled with style objects (or class names // read below), which describe the state of the slides at different points in time.
-Snap-scroll starts simultaneous sequential receiving of styles, taken from arrays of objects, to the corresponding slides.
+Anim-scroll starts simultaneous sequential receiving of styles, taken from arrays of objects, to the corresponding slides.
 
 ### Usage
 #### Terminal
 To install the library:
 ```terminal
-npm i snap-scroll
+npm i anim-scroll
 ```
 #### HTML
 Here is the basic structure:
 ```html
-<div id="snap-box">
+<div id="anim-box">
 	<div>First slide</div>
 	<div>Second slide</div>
 	<div>Third slide</div>
@@ -26,7 +26,7 @@ Here is the basic structure:
 ```
 If you need full-screen usage, just add classes to your blocks:
 ```css
-#snap-box, div {
+#anim-box, div {
 	width: 100%;
 	height: 100%;
 }
@@ -35,15 +35,15 @@ Or add the necessary styles to the options object.
 #### JS
 The class constructor takes two parameters as input. The first is the `target`, it is required. The `target type` can be a 'String' or an ['Element'](https://developer.mozilla.org/ru/docs/Web/API/Element) (HTMLElement). The second is `options object`, it is optional:
 ```js
-import SnapScroll from 'snap-scroll';
+import AnimScroll from 'anim-scroll';
 
-const snap = new SnapScroll('#snap-box'/*, { your options here }*/)
+const anim = new AnimScroll('#anim-box'/*, { your options here }*/)
 ```
 ### Options
 #### Main
 >You can see (and/or use) a couple of examples in the "templates" folder of this repository.
 
-The main options in which the snapScroll object is configured:
+The main options in which the AnimScroll object is configured:
 ```js
 {
 	navBar: true, // enable / disable navigation bar
@@ -158,23 +158,25 @@ For example:
 ### API
 #### Getters
 ```js
-console.log(snap.target); // returns your target
-console.log(snap.options); // returns validated options
-console.log(snap.activeSlide); // returns the index of the active slide
+console.log(anim.target); // returns your target
+
+console.log(anim.options); // returns validated options
+
+console.log(anim.activeSlide); // returns the index of the active slide
 ```
 #### Setters
 ```js
-snap.target = '#new-target'; // destroys '#previous-target' and builds '#new-target'
+anim.target = '#new-target'; // destroys '#previous-target' and builds '#new-target'
 
-snap.options = { /* options */ }; // rebuilds with new options
+anim.options = { /* options */ }; // rebuilds with new options
 
-snap.goTo(slideIndex /* number */); // goes to slide with given index (countdown starts from 0);
+anim.goTo(slideIndex /* number */); // goes to slide with given index (countdown starts from 0);
 
-snap.next(); // goes to the next slide;
+anim.next(); // goes to the next slide;
 
-snap.prev(); // goes to the previous slide;
+anim.prev(); // goes to the previous slide;
 
-snap.auto(delay /* ms */); // starts autoscrolling.
+anim.auto(delay /* ms */); // starts autoscrolling.
 
 ```
 Methods 'goTo()', 'next()', 'prev()' return a `promise` that will be resolved at the end of the animation. Method 'auto()' also returns a promise, but it will be resolved only if `options.infinite: false`. The parameter that accepts the method 'auto()' sets the delay between the transitions to the next slides.
