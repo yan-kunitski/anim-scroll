@@ -1,6 +1,6 @@
 Anim-scroll
 ----------------
-Anim-scroll is a library for easy creation of animated page scrolling. Works on mobile devices as well as on all desktop browsers and IE 9+.
+Anim-scroll is a library for easy creation of animated page scrolling. Works on mobile devices as well as on all desktop browsers.
 
 **How it comes:**
 
@@ -18,17 +18,17 @@ npm i anim-scroll
 Here is the basic structure:
 ```html
 <div id="anim-box">
-	<div>First slide</div>
-	<div>Second slide</div>
-	<div>Third slide</div>
-	<div>Fourth slide</div>
+  <div>First slide</div>
+  <div>Second slide</div>
+  <div>Third slide</div>
+  <div>Fourth slide</div>
 </div>
 ```
 If you need full-screen usage, just add classes to your blocks:
 ```css
 #anim-box, div {
-	width: 100%;
-	height: 100%;
+  width: 100%;
+  height: 100%;
 }
 ```
 Or add the necessary styles to the options object.
@@ -46,14 +46,14 @@ const anim = new AnimScroll('#anim-box'/*, { your options here }*/)
 The main options in which the AnimScroll object is configured:
 ```js
 {
-	navBar: true, // enable / disable navigation bar
-	navArrows: true, // enable / disable arrow navigation
-	autoScroll: false, // enable / disable automatic scrolling
-	infinite: false,
-	scrollSensitivity: 100, // px
-	delayBetweenSlides: 400, // ms
-	whereToBegin: 0, // this slide will open first after page load
-	hints: [ 'first', 'second', /* ... */]
+  navBar: true, // enable / disable navigation bar
+  navArrows: true, // enable / disable arrow navigation
+  autoScroll: false, // enable / disable automatic scrolling
+  infinite: false,
+  scrollSensitivity: 100, // px
+  delayBetweenSlides: 400, // ms
+  whereToBegin: 0, // this slide will open first after page load
+  hints: [ 'first', 'second', /* ... */]
 }
 ```
 `infinite`: allows you to jump from first to last slide and vice versa when you click on the navigation arrows.
@@ -65,54 +65,54 @@ The main options in which the AnimScroll object is configured:
 `hints`: an array of hints that pop up when you hover over a navigation pointer.
 #### Styles
 All style fields support either an object with styles or a CSS class name.
-In addition, the 'shape' field also supports an object of type ['Element'](https://developer.mozilla.org/ru/docs/Web/API/Element)
+In addition, the 'shape' field also supports an object of type ['DOM Element'](https://developer.mozilla.org/ru/docs/Web/API/Element)
 For example:
 ```js
 {
-	hintStyle: {
-		color: 'red',
-		fontSize: '20px',
-		display: 'flex'
-	},
-	// or
-	tragetStyle: '.my-target-class'
+  hintStyle: {
+    color: 'red',
+    fontSize: '20px',
+    display: 'flex'
+  },
+  // or
+  tragetStyle: '.my-target-class'
 }
 ```
 Here are the style fields:
 ```js
 {
-	targetStyle: { // default
-		display: 'flex',
-		justifyContent: 'center',
-		alignItems: 'center'
+  targetStyle: { // default
+	display: 'flex',
+	justifyContent: 'center',
+	alignItems: 'center'
+  },
+  hintStyle: {
+	indent: '10px' // sets the gap in 'px' between the hint and the navigation link 
+  }, 
+  slideStyle: {},
+  arrowStyle: {
+	wrapper: {},
+	arrowsPositions: {
+	  next: { bottom: '2vh' },
+	  prev: { top: '2vh' }
 	},
-	hintStyle: {
-		indent: '10px' // sets the gap in 'px' between the hint and the navigation link 
-	}, 
-	slideStyle: {},
-	arrowStyle: {
-		wrapper: {},
-		arrowsPositions: {
-			next: { bottom: '2vh' },
-			prev: { top: '2vh' }
-		},
-		arrows: {
-			shape: {},
-			usual: {},
-			hover: {},
-			active: {}
-		}
-	},
-	navBarStyle: {
-		wrapper: {},
-		dots: {
-			shape: {},
-			usual: {},
-			hover: {},
-			active: {}
-			wrapper: {}
-		}
+	arrows: {
+	  shape: {},
+	  usual: {},
+	  hover: {},
+	  active: {}
+  }
+},
+  navBarStyle: {
+	wrapper: {},
+	dots: {
+	  shape: {},
+	  usual: {},
+	  hover: {},
+	  active: {}
+	  wrapper: {}
 	}
+  }
 }
 ```
 #### Slide animation
@@ -126,34 +126,36 @@ The second and subsequent style objects can contain absolutely any CSS options.
 
 For example:
 ```js
-	slideAnimation: {
-		active: [
-			{
-				transition: '0s',
-				top: '0',
-				transform: 'scale(1) rotate(0deg)'
-			},
-			{
-				transition: '.2s ease .1s',
-				top: '0',
-				transform: 'scale(1.2)'
-			},
-			{
-				transition: '.4s',
-				transitionDelay: '.1s',
-				top: '-100%',
-				transform: 'scale(0.5) rotate(10deg)'
-			}
-		],
-		next: [
-			{
-				transition: '0s',
-				top: '100%',
-				transform: 'scale(1) rotate(0deg)'
-			},
-			'.your-next-slide-animation-class'
-		]
-	}
+{
+  slideAnimation: {
+	active: [
+	  {
+		transition: '0s',
+		top: '0',
+		transform: 'scale(1) rotate(0deg)'
+	  },
+	  {
+		transition: '.2s ease .1s',
+		top: '0',
+		transform: 'scale(1.2)'
+	  },
+	  {
+		transition: '.4s',
+		transitionDelay: '.1s',
+		top: '-100%',
+		transform: 'scale(0.5) rotate(10deg)'
+	  }
+	],
+	next: [
+	  {
+		transition: '0s',
+		top: '100%',
+		transform: 'scale(1) rotate(0deg)'
+	  },
+		'.your-next-slide-animation-class'
+	]
+  }
+}
 ```
 ### API
 #### Getters
@@ -180,3 +182,11 @@ anim.auto(delay /* ms */); // starts autoscrolling.
 
 ```
 Methods 'goTo()', 'next()', 'prev()' return a `promise` that will be resolved at the end of the animation. Method 'auto()' also returns a promise, but it will be resolved only if `options.infinite: false`. The parameter that accepts the method 'auto()' sets the delay between the transitions to the next slides.
+### Support
+The transpiled library uses ES6 features such as: generators, classes, arrow functions, for of. Therefore:
+* Chrome: 50
+* Opera: 37
+* Firefox: 53
+* Safari: 10
+* Edge: 13
+If you need ES5 support you can use [babel](https://babeljs.io/docs/en/babel-preset-env) in your project.
