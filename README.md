@@ -1,7 +1,7 @@
 <h1 align="center">
   Anim-scroll
   <br>
-  <img src="/other/header.gif" width="50%" height="50%" alt="anim-scroll"/>
+  <img src="/other/header.gif" width="60%" height="60%" alt="anim-scroll"/>
 </h1>
 
 Anim-scroll is a library for easy creation of animated page scrolling. Works on mobile devices as well as on all desktop browsers.
@@ -113,26 +113,26 @@ Here are the style fields:
       active: {} // sets the style of the activated arrow
     },
     arrowsPositions: { // sets the location of the arrows
-	  next: { // forward arrow (next slide)
+      next: { // forward arrow (next slide)
         bottom: '2vh', 
 	    right: '10px'
 	  },
-	  prev: { // back arrow (previous slide)
+      prev: { // back arrow (previous slide)
         top: '2vh',
 	    right: '10px'
 	  }
 	},
 },
   navBarStyle: {
-	wrapper: { // sets navigation bar wrapper
-      direction: 'column' // or 'row'; custom option!!
-	},
+    wrapper: { // sets navigation bar wrapper
+	  direction: 'column' // or 'row'; custom option!!
+    },
     dots: {
       shape: {}, // sets the dots shape
       usual: {}, // sets the default dots style
       hover: {}, // sets the style of the dot when you hover
-      active: {} // sets the style of the activated dot
-	  wrapper: {} // sets dot wrapper
+	  active: {} // sets the style of the activated dot
+      wrapper: {} // sets dot wrapper
     }
   }
 }
