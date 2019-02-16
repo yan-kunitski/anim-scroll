@@ -39,14 +39,17 @@ var AnimScroll = (function () {
 			},
 			usual: {
 				transition: ".2s",
+				trms: 200,
 				transform: "scale(1)"
 			},
 			hover: {
 				transition: ".2s",
+				trms: 200,
 				transform: "scale(1.2)"
 			},
 			active: {
 				transition: ".2s",
+				trms: 200,
 				transform: "scale(0.8)"
 			}
 		},
@@ -77,14 +80,17 @@ var AnimScroll = (function () {
 			},
 			usual: {
 				transition: ".15s",
+				trms: 150,
 				transform: "scale(1)"
 			},
 			hover: {
 				transition: ".15s",
+				trms: 150,
 				transform: "scale(1.2)"
 			},
 			active: {
 				transition: ".15s .7s",
+				trms: 850,
 				transform: "scale(1.3)"
 			},
 			wrapper: {
@@ -97,21 +103,25 @@ var AnimScroll = (function () {
 		active: [
 			{
 				top: "0%",
-				transition: "0s"
+				transition: "0s",
+				trms: 0
 			},
 			{
 				top: "-100%",
-				transition: "800ms ease"
+				transition: ".8s ease",
+				trms: 800
 			}
 		],
 		next: [
 			{
 				top: "100%",
-				transition: "0s"
+				transition: "0s",
+				trms: 0
 			},
 			{
 				top: "0%",
-				transition: ".8s ease"
+				transition: ".8s ease",
+				trms: 800
 			}
 		]
 	};
@@ -257,13 +267,9 @@ var AnimScroll = (function () {
 
 	function validateFields(options, conf) {
 	  var _loop = function _loop(key) {
-	    if (options[key] instanceof Object && !/hints|hintStyle|shape|usual|hover|active|next|prev|wrapper/.test(key)) {
-	      validateFields(options[key], conf[key]);
-	    } else if (options[key] instanceof Array && key !== 'hints') {
-	      options[key].forEach((el, i) => {
-	        conf[key][i] = fieldCorrection(el);
-	      });
-	    } else conf[key] = fieldCorrection(options[key]);
+	    if (options[key] instanceof Object && !/hints|hintStyle|shape|usual|hover|active|next|prev|wrapper/.test(key)) validateFields(options[key], conf[key]);else if (options[key] instanceof Array && key !== 'hints') options[key].forEach((el, i) => {
+	      conf[key][i] = fieldCorrection(el);
+	    });else conf[key] = fieldCorrection(options[key]);
 	  };
 
 	  for (var key in options) {
@@ -317,7 +323,7 @@ var AnimScroll = (function () {
 	});
 
 	var setStyle = ((box, obj) => {
-	  box.style.transition = obj.transition;
+	  box.style.transition = obj.transition || '0s';
 	  Object.assign(box.style, obj);
 	});
 
@@ -692,7 +698,7 @@ var AnimScroll = (function () {
 	        next: wrapper.arrows[`arrow${tapeD === 'next' ? 'Next' : 'Prev'}`].firstChild
 	      }, {
 	        active: [{
-	          '': ''
+	          trms: 0
 	        }],
 	        next: [options.arrowStyle.arrows.active, options.arrowStyle.arrows.usual]
 	      });
