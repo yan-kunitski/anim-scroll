@@ -1,6 +1,7 @@
 Anim-scroll
 ===========
-![anim](https://github.com/vazaio/anim-scroll/raw/master/main.gif)
+<img src="https://github.com/vazaio/anim-scroll/raw/master/other/header.gif" width="90%" height="90%" alt="anim-scroll"/>
+
 Anim-scroll is a library for easy creation of animated page scrolling. Works on mobile devices as well as on all desktop browsers.
 
 **How it comes:**
