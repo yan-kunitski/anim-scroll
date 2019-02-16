@@ -1,4 +1,4 @@
-class OptionsError extends Error {
+export class OptionsError extends Error {
 	constructor(msg) {
 		super();
 		this.message = msg;
@@ -6,13 +6,10 @@ class OptionsError extends Error {
 	}
 }
 
-class AnimationError extends Error {
+export class AnimationError extends Error {
 	constructor(msg) {
 		super();
 		this.message = msg;
 		Error.captureStackTrace(this);
 	}
 }
-
-module.exports.OptionsError = OptionsError;
-module.exports.AnimationError = AnimationError;

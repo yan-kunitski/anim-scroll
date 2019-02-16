@@ -1,9 +1,10 @@
-const hasCssRules = require('./hasCssRules');
-const toCamelCase = require('./toCamelCase');
-const { OptionsError } = require('../errors');
+import haveCssRules from './haveCssRules';
+import { OptionsError } from '../errors';
 
-module.exports = name => {
-	const style = hasCssRules(name);
+const toCamelCase = str => str.replace(/-[a-z]/g, m => m[1].toUpperCase());
+
+export default name => {
+	const style = haveCssRules(name);
 	let styleObj = {};
 	let str = '';
 	let wkStr = '';

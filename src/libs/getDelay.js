@@ -1,34 +1,13 @@
-const { OptionsError } = require('../errors/');
+import { OptionsError } from '../errors/index';
 
-function compute(options) {
-	if (!options) return 0;
-	if (typeof options === 'string') options = [{ transition: options }];
-
-	const reg = /(\d+)?(\.)?(\d+)(s|ms)/g;
-	let parsedArray = [];
-	let multiplier = 0;
+export default arr => {
 	let delay = 0;
+	try {
+		if (!arr) return 0;
+		if (typeof arr === 'string') arr = [{ transition: arr }];
 
-	options.forEach(obj => { parsedArray = [...parsedArray, ...obj.transition.match(reg)]; });
-	parsedArray.forEach(str => {
-		str = str.indexOf('.') === 0 ? `0${str}` : str;
-		multiplier = str.indexOf('ms') !== -1 ? 1 : 1000;
-		delay += parseFloat(str) * multiplier;
-	});
+		arr.forEach(el => { el.transition.match(/(\d*\.?\d+(s|ms))/g).forEach(d => { delay += parseFloat(d) * (/ms/.test(d) ? 1 : 1000); }); });
+	} catch (err) { throw new OptionsError(`Error in transition options ${err}`); }
 
 	return delay;
-}
-
-module.exports = (...args) => {
-	let delay = 0;
-	let computed;
-
-	try {
-		args.forEach(el => {
-			computed = compute(el);
-			if (computed > delay) delay = computed;
-		});
-
-		return delay;
-	} catch (err) { throw new OptionsError(`Error in transition options ${err}`); }
 };

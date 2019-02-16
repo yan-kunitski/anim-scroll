@@ -1,6 +1,6 @@
-const setStyle = require('../../libs/setStyle');
+import setStyle from '../../libs/setStyle';
 
-module.exports = (wrapper, options, activeSlide) => {
+export default (wrapper, options, activeSlide) => {
 	const evOver = options.isMobile ? 'touchstart' : 'mouseover';
 	const evOut = options.isMobile ? 'touchend' : 'mouseout';
 	const nB = wrapper.navBar ? wrapper.navBar.children : {};

@@ -39,16 +39,24 @@ import AnimScroll from 'anim-scroll';
 
 const anim = new AnimScroll('#anim-box'/*, { your options here }*/)
 ```
+#### Script
+You can also connect the file downloaded from the ["build"](https://github.com/vazaio/anim-scroll/tree/master/build) folder.
+```html
+<script src="anim.min.js"></script>
+<script>
+  const anim = new AnimScroll('#anim-box');
+<script>
+```
 ### Options
 #### Main
->You can see (and/or use) a couple of examples in the "templates" folder of this repository.
+>You can see (and/or use) a couple of examples in the ["templates"](https://github.com/vazaio/anim-scroll/tree/master/templates) folder of this repository.
 
 The main options in which the AnimScroll object is configured:
 ```js
 {
   navBar: true, // enable / disable navigation bar
   navArrows: true, // enable / disable arrow navigation
-  autoScroll: false, // enable / disable automatic scrolling
+  autoScroll: false, //ms, enable / disable automatic scrolling;
   infinite: false,
   scrollSensitivity: 100, // px
   delayBetweenSlides: 400, // ms
@@ -58,11 +66,13 @@ The main options in which the AnimScroll object is configured:
 ```
 `infinite`: allows you to jump from first to last slide and vice versa when you click on the navigation arrows.
 
-`scrollSensitivity`: sets up how much you need to scroll the page for the animation to work.
+`scrollSensitivity`: sets up how much you need to scroll the page for the animation to begin.
 
 `delayBetweenSlides`: sets the delay between the animations of the current slide and the next slide.
 
 `hints`: an array of hints that pop up when you hover over a navigation pointer.
+
+`autoScroll`: in order to activate autoscrolling the value of the field must be "true" or "number". The number sets the delay between slides scrolling.
 #### Styles
 All style fields support either an object with styles or a CSS class name.
 In addition, the 'shape' field also supports an object of type ['DOM Element'](https://developer.mozilla.org/ru/docs/Web/API/Element)
@@ -81,40 +91,50 @@ For example:
 Here are the style fields:
 ```js
 {
-  targetStyle: { // default
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center'
+  targetStyle: { // default, recommended not to change
+    display: 'flex', // default
+    justifyContent: 'center', // default
+    alignItems: 'center' // default
   },
   hintStyle: {
-    indent: '10px' // sets the gap in 'px' between the hint and the navigation link 
+	indent: '10px' // custom option!!
   }, 
   slideStyle: {},
   arrowStyle: {
-    wrapper: {},
-    arrowsPositions: {
-      next: { bottom: '2vh' },
-      prev: { top: '2vh' }
-	},
+    wrapper: {}, // sets the arrows wrapper
     arrows: {
-      shape: {},
-      usual: {},
-      hover: {},
-      active: {}
-  }
+      shape: {}, // sets the arrows shape
+      usual: {}, // sets the default arrows style
+      hover: {}, // sets the style of the arrow when you hover
+      active: {} // sets the style of the activated arrow
+    },
+    arrowsPositions: { // sets the location of the arrows
+      next: { // forward arrow (next slide)
+		bottom: '2vh', 
+	    right: '10px'
+	  },
+      prev: { // back arrow (previous slide)
+		top: '2vh',
+	    right: '10px'
+	  }
+	},
 },
   navBarStyle: {
-    wrapper: {},
+    wrapper: { // sets navigation bar wrapper
+		direction: 'column' // or 'row'; custom option!!
+	},
     dots: {
-      shape: {},
-      usual: {},
-      hover: {},
-      active: {}
-      wrapper: {}
+      shape: {}, // sets the dots shape
+      usual: {}, // sets the default dots style
+      hover: {}, // sets the style of the dot when you hover
+      active: {} // sets the style of the activated dot
+      wrapper: {} // sets dot wrapper
 	}
   }
 }
 ```
+`hintStyle.indent`: sets the gap in 'px' between the hint and the navigation link.
+`navBarStyle.wrapper.direction`: it makes navBar vertical or horizontal. This option also determines the type of swipe on mobile devices (**row - horizontal swipe**, **column - vertical swipe**)
 #### Slide animation
 Slides animation is defined by two arrays. Each of the arrays must contain style objects or class names (you can also combine objects and class names in the same array). **The minimum number** of style objects in an array is 2.
 The first object in the array must contain the initial state of the slide. This state **should not be animated**, it means:
@@ -122,7 +142,7 @@ The first object in the array must contain the initial state of the slide. This 
 { transition: '0s 0s' }
 ```
 The second and subsequent style objects can contain absolutely any CSS options.
->You can see (and/or use) a couple of examples in the "templates" folder of this repository.
+>You can see (and/or use) a couple of examples in the ["templates"](https://github.com/vazaio/anim-scroll/tree/master/templates) folder of this repository.
 
 For example:
 ```js
@@ -190,4 +210,4 @@ The transpiled library uses ES6 features such as: generators, classes, arrow fun
 * Safari: 10
 * Edge: 13
 
-If you need ES5 support you can use [babel](https://babeljs.io/docs/en/babel-preset-env) in your project.
+If you need ES5 support you can use polyfill file from the ["build"](https://github.com/vazaio/anim-scroll/tree/master/build) folder. The polyfill file is supported by **Internet Explorer 10** and higher. You can also always use Babel in your project.

@@ -1,7 +1,7 @@
-const setBlock = require('./setBlock');
-const animation = require('../animation');
+import setBlock from './setBlock';
+import animation from '../animation';
 
-module.exports = (wrapper, options, activeSlide) => {
+export default (wrapper, options, activeSlide) => {
 	const ev = options.isMobile ? 'touchend' : 'click';
 
 	function handler(e) {

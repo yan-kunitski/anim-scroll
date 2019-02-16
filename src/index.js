@@ -1,9 +1,9 @@
-const config = require('./config');
-const validateOptions = require('./bin/validateOptions');
-const init = require('./bin/init');
-const tuneBox = require('./bin/tuneBox');
-const onEvent = require('./bin/onEvent');
-const animation = require('./bin/animation');
+import config from './config';
+import validateOptions from './bin/validateOptions';
+import init from './bin/init';
+import tuneBox from './bin/tuneBox';
+import onEvent from './bin/onEvent';
+import animation from './bin/animation';
 
 const build = (instance, target, options) => {
 	instance._target = target;
@@ -15,7 +15,7 @@ const build = (instance, target, options) => {
 	instance._activeSlide = { value: instance._options.whereToBegin };
 	onEvent(instance._ss, instance._options, instance._activeSlide);
 
-	if (options.autoScroll) instance.auto(instance._options.autoScroll);
+	if (options.autoScroll || options.autoScroll === 0) instance.auto(instance._options.autoScroll);
 };
 
 const destroy = instance => {
@@ -64,7 +64,7 @@ class AnimScroll {
 	prev() { return this.goTo('prev'); }
 
 	auto(delay, direction = 'next') {
-		const interval = this._options.animDuration + delay;
+		const interval = this._options.animDuration + (delay || 0);
 
 		return new Promise(resolve => {
 			const autoScroll = setInterval(() => {
@@ -78,4 +78,4 @@ class AnimScroll {
 	}
 }
 
-module.exports = AnimScroll;
+export default AnimScroll;

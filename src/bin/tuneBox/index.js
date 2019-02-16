@@ -1,8 +1,8 @@
-const setSlides = require('./setSlide');
-const setNavBar = require('./setNavBar');
-const setArrows = require('./setArrows');
+import setSlides from './setSlide';
+import setNavBar from './setNavBar';
+import setArrows from './setArrows';
 
-module.exports = (box, options) => {
+export default (box, options) => {
 	let slides = {};
 	let navBar = null;
 	let arrows = null;

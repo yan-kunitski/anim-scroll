@@ -1,4 +1,4 @@
-module.exports = (direction, wrapper, activeSlide, dotI, infinite) => {
+export default (direction, wrapper, activeSlide, dotI, infinite) => {
 	const slideNow = wrapper.slides.children[activeSlide.value];
 	const navNow = wrapper.navBar ? wrapper.navBar.children[activeSlide.value].children[dotI] : {};
 	const obj = {
@@ -14,12 +14,10 @@ module.exports = (direction, wrapper, activeSlide, dotI, infinite) => {
 	if (direction === 'next') {
 		if (activeSlide.value < wrapper.slides.children.length - 1) activeSlide.value += 1;
 		else if (infinite) activeSlide.value = 0;
-	}
-	if (direction === 'prev') {
+	} else if (direction === 'prev') {
 		if (activeSlide.value > 0) activeSlide.value -= 1;
 		else if (infinite) activeSlide.value = wrapper.slides.children.length - 1;
-	}
-	if (typeof direction === 'number') {
+	} else {
 		d = direction;
 		direction = direction > activeSlide.value ? 'next' : 'prev';
 		activeSlide.value = d;

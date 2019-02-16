@@ -1,23 +1,14 @@
-const { OptionsError } = require('../errors/');
-const setStyle = require('./setStyle');
+import { OptionsError } from '../errors/index';
+import setStyle from './setStyle';
+import haveRules from './haveCssRules';
 
-function hasCssRules(options) {
-	const className = `.${options}`;
-
-	for (const el of document.styleSheets) {
-		for (const rule of el.rules) if (className === rule.selectorText) return true;
-	}
-
-	return false;
-}
-
-module.exports = options => {
+export default options => {
 	if (options instanceof Element) return options;
 	if (typeof options === 'string') {
 		let elDOM = document.querySelector(options);
 
 		if (elDOM) return elDOM;
-		if (hasCssRules(options)) {
+		if (haveRules(options)) {
 			elDOM = document.createElement('div');
 			elDOM.classList.add(options);
 

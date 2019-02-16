@@ -1,9 +1,9 @@
-const scroll = require('./scroll');
-const click = require('./click');
-const touch = require('./touch');
-const hover = require('./hover');
+import scroll from './scroll';
+import click from './click';
+import touch from './touch';
+import hover from './hover';
 
-module.exports = (elements, options, activeSlide) => {
+export default (elements, options, activeSlide) => {
 	try {
 		if (options.isMobile) touch(elements, options, activeSlide);
 		else scroll(elements, options, activeSlide);

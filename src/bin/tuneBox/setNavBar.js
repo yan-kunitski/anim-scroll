@@ -1,8 +1,8 @@
-const setStyle = require('../../libs/setStyle');
-const getElement = require('../../libs/getElement');
-const setSsClick = require('./setSsClick');
+import setStyle from '../../libs/setStyle';
+import getElement from '../../libs/getElement';
+import setSsClick from './setSsClick';
 
-module.exports = (box, options, amount) => {
+export default (box, options, amount) => {
 	const navBar = document.createElement('div');
 	const dotWrapper = document.createElement('div');
 	const dot = getElement(options.navBarStyle.dots.shape);

@@ -1,7 +1,7 @@
-const getElmenet = require('../libs/getElement');
-const { OptionsError } = require('../errors');
+import getElmenet from '../libs/getElement';
+import { OptionsError } from '../errors';
 
-module.exports = target => {
+export default target => {
 	const box = getElmenet(target);
 
 	if (!box) {

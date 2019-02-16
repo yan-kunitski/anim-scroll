@@ -1,6 +1,6 @@
-const setStyle = require('../../libs/setStyle');
+import setStyle from '../../libs/setStyle';
 
-module.exports = (box, options) => {
+export default (box, options) => {
 	const wrapper = document.createElement('div');
 	const childs = [...box.children];
 

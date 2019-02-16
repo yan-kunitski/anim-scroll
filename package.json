@@ -5,20 +5,28 @@
 	},
 	"description": "Small library to animate your web pages",
 	"scripts": {
-		"build": "npx babel src --out-dir dist"
+		"buildNPM": "npx babel src --out-dir dist",
+		"buildCDN": "npx rollup -c -g cdn && npx rollup -c -g cdn-min && npx rollup -c -g cdn-polyfill-min"
 	},
 	"license": "MIT",
-	"main": "src/index.js",
+	"main": "dist/index.js",
 	"name": "anim-scroll",
 	"version": "0.1.7",
 	"devDependencies": {
 		"@babel/cli": "^7.2.3",
 		"@babel/core": "^7.2.2",
-		"@babel/node": "^7.2.2",
+		"@babel/plugin-transform-runtime": "^7.2.0",
 		"@babel/preset-env": "^7.2.3",
+		"@babel/runtime": "^7.3.1",
 		"eslint": "^5.11.1",
 		"eslint-config-airbnb-base": "^13.1.0",
-		"eslint-plugin-import": "^2.14.0"
+		"eslint-plugin-import": "^2.14.0",
+		"rollup": "^1.1.2",
+		"rollup-plugin-babel": "^4.3.2",
+		"rollup-plugin-commonjs": "^9.2.0",
+		"rollup-plugin-json": "^3.1.0",
+		"rollup-plugin-node-resolve": "^4.0.0",
+		"rollup-plugin-terser": "^4.0.4"
 	},
 	"files": [
 		"dist",

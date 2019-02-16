@@ -1,13 +1,15 @@
-const promise = require('../../libs/promise');
-const getDelay = require('../../libs/getDelay');
-const setStyle = require('../../libs/setStyle');
+import promise from '../../libs/promise';
+import setStyle from '../../libs/setStyle';
 
 function step(box, options) {
 	setStyle(box, options);
 
-	return promise(getDelay(options.transition));
+	return promise(options.trms);
 }
 
-module.exports = async (box, options) => {
-	for (const el of options) await step(box, el);
-};
+async function steps(box, options) { for (const el of options) await step(box, el); }
+
+export default (tape, options) => Promise.all([
+	steps(tape.now, options.active),
+	steps(tape.next, options.next),
+]);

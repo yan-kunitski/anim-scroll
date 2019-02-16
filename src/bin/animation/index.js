@@ -1,28 +1,28 @@
-const frames = require('./frames');
-const promise = require('../../libs/promise');
-const getTape = require('./getTape');
+import engine from './engine';
+import promise from '../../libs/promise';
+import getTape from './getTape';
 
-module.exports = (direction, wrapper, options, activeSlide) => {
+export default (direction, wrapper, options, activeSlide) => {
 	try {
 		const { slideTape, navTape, tapeD } = getTape(direction, wrapper, activeSlide, options.dotIndex, options.infinite);
 
 		if (slideTape.now === slideTape.next) return promise(0);
 
-		frames(slideTape, (tapeD === 'next' ? options.slideAnimation : options.slideAnimationRev));
+		engine(slideTape, (tapeD === 'next' ? options.slideAnimation : options.slideAnimationRev));
 
 		if (wrapper.navBar) {
-			frames(navTape, {
+			engine(navTape, {
 				active: [options.navBarStyle.dots.usual],
 				next: [options.navBarStyle.dots.active],
 			});
 		}
 		if (wrapper.arrows) {
-			frames({
+			engine({
 				now: { style: {} },
 				next: wrapper.arrows[`arrow${tapeD === 'next' ? 'Next' : 'Prev'}`].firstChild,
 			},
 			{
-				active: [{ '': '' }],
+				active: [{ trms: 0 }],
 				next: [
 					options.arrowStyle.arrows.active,
 					options.arrowStyle.arrows.usual,

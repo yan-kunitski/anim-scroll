@@ -1,8 +1,8 @@
-const setStyle = require('../../libs/setStyle');
-const getElement = require('../../libs/getElement');
-const setSsClick = require('./setSsClick');
+import setStyle from '../../libs/setStyle';
+import getElement from '../../libs/getElement';
+import setSsClick from './setSsClick';
 
-module.exports = (box, options) => {
+export default (box, options) => {
 	const arrow = getElement(options.arrowStyle.arrows.shape);
 	const arrowNext = document.createElement('div');
 	const prevTransform = options.arrowStyle.arrows.usual.transform;
