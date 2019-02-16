@@ -1,0 +1,71 @@
+{
+	"navBar": false,
+	"navArrows": false,
+	"autoScroll": 0,
+	"infinite": false,
+	"scrollSensitivity": 50,
+	"delayBetweenSlides": 0,
+	"whereToBegin": 0,
+	"hints": [],
+	"hintStyle": {
+	},
+	"targetStyle": { 
+		"display": "flex",
+		"justifyContent": "center",
+		"alignItems": "center",
+		"perspective": "1000px",
+		"backgroundColor": "black"
+	},
+	"slideStyle": {
+		"transform": "rotateX(60deg) translateY(-35%)",
+		"width": "60%",
+		"height": "400%"
+	},
+	"arrowStyle": {
+		"wrapper": {
+			"display": "block"
+		},
+		"arrows": {
+			"shape": {},
+			"usual": {},
+			"hover": {},
+			"active": {}
+		},
+		"arrowsPositions": {
+			"next": {},
+			"prev": {}
+		}
+	},
+	"navBarStyle": {
+		"wrapper": {},
+		"dots": {
+			"shape": {},
+			"usual": {},
+			"hover": {},
+			"active": {},
+			"wrapper": {}
+		}
+	},
+	"slideAnimation": {
+		"active": [
+			{
+				"top": "0%",
+				"transition": "0s"
+			},
+			{
+				"top": "-100%",
+				"transition": "30s linear"
+			}
+		],
+		"next": [
+			{
+				"top": "100%",
+				"transition": "0s"
+			},
+			{
+				"top": "0%",
+				"transition": "30s linear"
+			}
+		]
+	}
+}
