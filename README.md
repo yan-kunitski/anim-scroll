@@ -1,5 +1,6 @@
 <h1 align="center">
   Anim-scroll
+  <br>
   <img src="/other/header.gif" width="50%" height="50%" alt="anim-scroll"/>
 </h1>
 
