@@ -1,6 +1,7 @@
-Anim-scroll
-===========
-<img src="https://github.com/vazaio/anim-scroll/raw/master/other/header.gif" width="90%" height="90%" alt="anim-scroll"/>
+<h1 align="center">
+  Anim-scroll
+  <img src="/other/header.gif" width="50%" height="50%" alt="anim-scroll"/>
+</h1>
 
 Anim-scroll is a library for easy creation of animated page scrolling. Works on mobile devices as well as on all desktop browsers.
 
@@ -99,7 +100,7 @@ Here are the style fields:
     alignItems: 'center' // default
   },
   hintStyle: {
-	indent: '10px' // custom option!!
+    indent: '10px' // custom option!!
   }, 
   slideStyle: {},
   arrowStyle: {
@@ -111,27 +112,27 @@ Here are the style fields:
       active: {} // sets the style of the activated arrow
     },
     arrowsPositions: { // sets the location of the arrows
-      next: { // forward arrow (next slide)
-		bottom: '2vh', 
+	  next: { // forward arrow (next slide)
+        bottom: '2vh', 
 	    right: '10px'
 	  },
-      prev: { // back arrow (previous slide)
-		top: '2vh',
+	  prev: { // back arrow (previous slide)
+        top: '2vh',
 	    right: '10px'
 	  }
 	},
 },
   navBarStyle: {
-    wrapper: { // sets navigation bar wrapper
-		direction: 'column' // or 'row'; custom option!!
+	wrapper: { // sets navigation bar wrapper
+      direction: 'column' // or 'row'; custom option!!
 	},
     dots: {
       shape: {}, // sets the dots shape
       usual: {}, // sets the default dots style
       hover: {}, // sets the style of the dot when you hover
       active: {} // sets the style of the activated dot
-      wrapper: {} // sets dot wrapper
-	}
+	  wrapper: {} // sets dot wrapper
+    }
   }
 }
 ```
