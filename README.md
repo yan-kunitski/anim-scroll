@@ -1,6 +1,6 @@
 Anim-scroll
 ===========
-![](https://github.com/vazaio/anim-scroll/tree/master/other/main.gif "anim-scroll")
+![anim](https://github.com/vazaio/anim-scroll/tree/master/other/main.gif "anim-scroll")
 Anim-scroll is a library for easy creation of animated page scrolling. Works on mobile devices as well as on all desktop browsers.
 
 **How it comes:**
@@ -46,7 +46,7 @@ You can also connect the file downloaded from the ["build"](https://github.com/v
 <script src="anim.min.js"></script>
 <script>
   const anim = new AnimScroll('#anim-box');
-<script>
+</script>
 ```
 ### Options
 #### Main
