@@ -148,8 +148,7 @@ var AnimScroll = (function () {
 	  return isMobile;
 	});
 
-	var haveRules = function haveRules(name) {
-	  var styleSheet = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : document.styleSheets[0];
+	var haveRules = (name, styleSheet) => {
 	  var rules = styleSheet.rules || styleSheet.cssRules;
 	  var rule;
 	  var mRule;
@@ -188,6 +187,41 @@ var AnimScroll = (function () {
 	  return rule;
 	};
 
+	var haveRules$1 = (name => {
+	  var rule;
+	  var _iteratorNormalCompletion2 = true;
+	  var _didIteratorError2 = false;
+	  var _iteratorError2 = undefined;
+
+	  try {
+	    for (var _iterator2 = document.styleSheets[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+	      var styles = _step2.value;
+
+	      try {
+	        rule = haveRules(name, styles);
+	        if (rule) break;
+	      } catch (err) {
+	        continue;
+	      }
+	    }
+	  } catch (err) {
+	    _didIteratorError2 = true;
+	    _iteratorError2 = err;
+	  } finally {
+	    try {
+	      if (!_iteratorNormalCompletion2 && _iterator2.return != null) {
+	        _iterator2.return();
+	      }
+	    } finally {
+	      if (_didIteratorError2) {
+	        throw _iteratorError2;
+	      }
+	    }
+	  }
+
+	  return rule;
+	});
+
 	class OptionsError extends Error {
 	  constructor(msg) {
 	    super();
@@ -200,7 +234,7 @@ var AnimScroll = (function () {
 	var toCamelCase = str => str.replace(/-[a-z]/g, m => m[1].toUpperCase());
 
 	var styleSheetToObj = (name => {
-	  var style = haveRules(name);
+	  var style = haveRules$1(name);
 	  var styleObj = {};
 	  var str = '';
 	  var wkStr = '';
@@ -334,7 +368,7 @@ var AnimScroll = (function () {
 	    var elDOM = document.querySelector(options);
 	    if (elDOM) return elDOM;
 
-	    if (haveRules(options)) {
+	    if (haveRules$1(options)) {
 	      elDOM = document.createElement('div');
 	      elDOM.classList.add(options);
 	      return elDOM;
