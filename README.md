@@ -37,7 +37,7 @@ If you need full-screen usage, just add classes to your blocks:
 ```
 Or add the necessary styles to the options object.
 #### JS
-The class constructor takes two parameters as input. The first is the `target`, it is required. The `target type` can be a 'String' or an ['Element'](https://developer.mozilla.org/ru/docs/Web/API/Element) (HTMLElement). The second is `options object`, it is optional:
+The class constructor takes two parameters as input. The first is the `target`, it is required. The `target type` can be a 'String' or an ["Element"](https://developer.mozilla.org/ru/docs/Web/API/Element) (HTMLElement). The second is `options object`, it is optional:
 ```js
 import AnimScroll from 'anim-scroll';
 
@@ -79,7 +79,7 @@ The main options in which the AnimScroll object is configured:
 `autoScroll`: in order to activate autoscrolling the value of the field must be "true" or "number". The number sets the delay between slides scrolling.
 #### Styles
 All style fields support either an object with styles or a CSS class name.
-In addition, the 'shape' field also supports an object of type ['DOM Element'](https://developer.mozilla.org/ru/docs/Web/API/Element)
+In addition, the 'shape' field also supports an object of type ["DOM Element"](https://developer.mozilla.org/en-US/docs/Web/API/Element)
 For example:
 ```js
 {
@@ -115,30 +115,56 @@ Here are the style fields:
     arrowsPositions: { // sets the location of the arrows
       next: { // forward arrow (next slide)
         bottom: '2vh', 
-	    right: '10px'
-	  },
+	right: '10px'
+      },
       prev: { // back arrow (previous slide)
         top: '2vh',
-	    right: '10px'
-	  }
-	},
+	right: '10px'
+      }
+   },
 },
   navBarStyle: {
     wrapper: { // sets navigation bar wrapper
-	  direction: 'column' // or 'row'; custom option!!
+      direction: 'column' // or 'row'; custom option!!
     },
     dots: {
       shape: {}, // sets the dots shape
       usual: {}, // sets the default dots style
       hover: {}, // sets the style of the dot when you hover
-	  active: {} // sets the style of the activated dot
+      active: {} // sets the style of the activated dot
       wrapper: {} // sets dot wrapper
     }
   }
 }
 ```
 `hintStyle.indent`: sets the gap in 'px' between the hint and the navigation link.
-`navBarStyle.wrapper.direction`: it makes navBar vertical or horizontal. This option also determines the type of swipe on mobile devices (**row - horizontal swipe**, **column - vertical swipe**)
+
+`navBarStyle.wrapper.direction`: it makes navBar vertical or horizontal. This option also determines the type of swipe on mobile devices (**row - horizontal swipe**, **column - vertical swipe**).
+
+You can define different styles for mobile devices and desktops using ["Media queries"](https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries). It works for animating slides too. However, it is necessary to transfer all fields from a simple class to the class declared in the media query. Otherwise, you will get an error.
+```css
+.box {
+	width: 10px;
+	height: 10px;
+	transition: 1s;
+}
+.circle {
+	border: 1px solid red;
+	borderRadius: 50%;
+}
+@media screen and (max-width: 768px) {
+	.box {
+		width: 10px;
+		height: 10px;
+		/* There is no property 'transition'. Error */
+	}
+	.circle {
+		borderRadius: 20px;
+		border: 10px solid gray;
+		/* All fields are in place. Success */
+	}
+}
+```
 #### Slide animation
 Slides animation is defined by two arrays. Each of the arrays must contain style objects or class names (you can also combine objects and class names in the same array). **The minimum number** of style objects in an array is 2.
 The first object in the array must contain the initial state of the slide. This state **should not be animated**, it means:
@@ -176,7 +202,7 @@ For example:
         top: '100%',
         transform: 'scale(1) rotate(0deg)'
       },
-        '.your-next-slide-animation-class'
+      '.your-next-slide-animation-class'
     ]
   }
 }
