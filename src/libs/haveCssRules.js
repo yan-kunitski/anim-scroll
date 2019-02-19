@@ -1,4 +1,4 @@
-const haveRules = (name, styleSheet = document.styleSheets[0]) => {
+const haveRules = (name, styleSheet) => {
 	const rules = styleSheet.rules || styleSheet.cssRules;
 	let rule;
 	let mRule;
@@ -16,4 +16,15 @@ const haveRules = (name, styleSheet = document.styleSheets[0]) => {
 	return rule;
 };
 
-export default haveRules;
+export default name => {
+	let rule;
+
+	for (const styles of document.styleSheets) {
+		try {
+			rule = haveRules(name, styles);
+			if (rule) break;
+		} catch (err) { continue; }
+	}
+
+	return rule;
+};
