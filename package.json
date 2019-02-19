@@ -9,7 +9,7 @@
 		"buildCDN": "npx rollup -c -g cdn && npx rollup -c -g cdn-min && npx rollup -c -g cdn-polyfill-min"
 	},
 	"license": "MIT",
-	"main": "dist/index.js",
+	"main": "src/index.js",
 	"name": "anim-scroll",
 	"version": "0.1.7",
 	"devDependencies": {
@@ -48,6 +48,8 @@
 		"mousewheel",
 		"sections",
 		"slides",
-		"slidehow"
+		"slidehow",
+		"fullpage",
+		"scroll"
 	]
 }
