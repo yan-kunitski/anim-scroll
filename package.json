@@ -11,7 +11,7 @@
 	"license": "MIT",
 	"main": "src/index.js",
 	"name": "anim-scroll",
-	"version": "0.1.7",
+	"version": "0.1.8",
 	"devDependencies": {
 		"@babel/cli": "^7.2.3",
 		"@babel/core": "^7.2.2",
